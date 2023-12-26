@@ -1,0 +1,109 @@
+
+.navbar{
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    height: 3.125rem;
+    position: sticky;
+    top: 0;
+    font-family:'Varela Round', sans-serif;
+    display: flex;
+    align-items: center;
+
+    .topLeft,.topRight{
+        flex: 3;
+    }
+    .topLeft{
+        display: flex;
+        justify-content: center;
+        gap: .8rem;
+    }
+    .icons{
+        font-size: 1.5rem;
+    }
+    .topCenter{
+        flex: 6;
+        ul{
+            display: flex;
+            justify-content: space-evenly;
+            
+            li{
+                list-style: none;
+            }
+            
+        }
+    }
+
+    .topRight{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .8rem;
+        img{
+            height: 1.5rem;
+            border-radius: 50%;
+        }
+    }
+    .hamburgerMenu{
+        display: none;
+        font-size: 1.5rem ;
+        position: absolute;
+        left: 90%;
+        bottom: 25%;
+    }
+
+    .mobileMenu{
+        display: none;
+        position: absolute;
+        top: 80%;
+        right: 0;
+        background:transparent;
+        padding: 2rem;
+        ul{
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        li{
+            list-style: none;
+        }
+    }
+
+}
+ 
+
+
+    @media screen and (max-width: 640px) {
+        
+
+        .topLeft,.topRight,.topCenter{
+            flex: none;
+        }
+        .topLeft{
+            display: none;
+        }
+        .topRight{
+            flex: 1;
+            flex-direction: row-reverse;
+            justify-content: flex-start;
+            margin-right: 3.5rem;
+            img{
+                height: 1.2rem;
+                border-radius: 50%;
+            }
+        }
+        .list li:nth-child(1){
+            padding-left: .8rem;
+        }
+        .list li:not(:nth-child(1)){
+            display: none;
+        }
+        .hamburgerMenu{
+            display: flex;
+        }
+       .active{
+        display: block;
+        }
+        
+    }
+    
+}
