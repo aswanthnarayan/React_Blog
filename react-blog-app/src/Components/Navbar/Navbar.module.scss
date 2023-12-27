@@ -9,6 +9,7 @@
     font-family:'Varela Round', sans-serif;
     display: flex;
     align-items: center;
+    z-index: 9999;
 
     .topLeft,.topRight{
         flex: 3;

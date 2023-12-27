@@ -1,0 +1,44 @@
+.home{
+    width: 100%;
+    position: relative;
+    .heading{
+        color:#444;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'lora', sans-serif;
+        font-style: italic;
+        position: absolute;
+        left: 45%;
+        top: 18%;
+        .smHead{
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1.5rem;
+        }
+        .bgHead{
+            font-size: 5.5rem;
+        }
+    }
+    img{
+        margin-top: 3rem;
+        width: 100%;
+        object-fit: cover;
+        height: calc(100vh - 6.125rem);
+    }
+
+
+}
+
+
+@media screen and (max-width: 640px) {
+    .home{
+        .heading{
+            left: 25%;
+            top: 25%;
+        }
+        img{
+        margin-top: 1.5rem;
+        }
+    }
+
+}
