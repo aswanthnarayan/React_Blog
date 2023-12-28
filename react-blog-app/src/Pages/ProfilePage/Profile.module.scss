@@ -1,0 +1,73 @@
+.profile {
+    display: flex;
+    height: 90vh;
+
+    .updateContainer {
+        flex: 9;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 5rem;
+        gap: 2rem;
+
+        .updateAccount {
+            display: flex;
+            justify-content: space-between;
+            p{
+                font-size: 1.5rem;
+                color: teal;
+            }
+            button {
+                width: 150px;
+                border: none;
+                border-radius: .5rem;
+                color: white;
+                background-color: tomato;
+                padding: .8rem;
+            }
+        }
+
+        .dpUpdate {
+            display: flex;
+            gap: 1rem;
+            align-items: end;
+
+            img {
+                width: 9.5rem;
+                border-radius:.5rem;
+            }
+            .dpEdit{
+                font-size: 1.5rem;
+                color: teal;
+            }
+        }
+
+        .updateForm {
+            display: flex;
+            flex-direction: column;
+
+            input {
+                margin-top: .5rem;
+                margin-bottom: .5rem;
+                height: 2rem;
+                border: none;
+                border-bottom: 1px solid lightgray;
+            }
+
+            .submitBtn {
+                align-self: center;
+                width: 150px;
+                border: none;
+                border-radius: .5rem;
+                color: white;
+                background-color: teal;
+                padding: .8rem;
+                margin-top: 1.5rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}
