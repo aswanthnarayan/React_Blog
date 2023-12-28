@@ -1,0 +1,76 @@
+.WritePage{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    img{
+        padding: 2rem;
+        width: 100%;
+        height: 16rem;
+        object-fit: cover;
+        border-radius: 2.5rem;
+    }
+    .formInput{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 70vw;
+        .insertImage{
+            position: absolute;
+            bottom: 25%;
+            left:-3rem;
+            font-size: 2.5rem;
+            cursor: pointer;
+        }
+        .titleInput{
+            font-size: 1.9rem;
+            border: none;
+            padding: 1.25rem;
+            width: 100%;
+            &:focus{
+             outline-style: none;
+            }
+        }
+     
+        .writeContent{
+            padding: 1.25rem;
+            height: 100vh;
+            width: 70vw; 
+            border: none;
+            &:focus{
+                outline-style: none;
+               }
+        }
+        .writeSubmit{
+            position: absolute;
+            right:-6rem;
+            top: -4rem;
+            background-color: teal;
+            color: #fff;
+            padding: .8rem;
+            border: none;
+            border-radius: .5rem;
+        }
+
+    }
+}
+
+@media screen and (max-width: 640px) {
+.WritePage{
+    .formInput{
+        flex-direction: column;
+        .writeContent{
+            width: 90vw;
+            height: 50vh;
+        }
+
+    .writeSubmit{
+        position: static;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+}
+}
+}
