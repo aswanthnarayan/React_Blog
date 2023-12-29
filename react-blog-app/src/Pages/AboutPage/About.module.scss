@@ -1,0 +1,56 @@
+.about{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:0 5rem;
+
+    .aboutItem{
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        gap: 1rem;
+        .aboutTitle{
+            font-size: 2.5rem;
+        }
+
+        .aboutList{
+            display: flex;
+            list-style: none;
+            text-align: center;
+            flex-wrap: wrap;
+            align-items: center;
+            width: 100%;
+            li{
+                width: 50%;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .aboutSocial{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: .8rem;
+            .icons{
+                font-size: 1.5rem;
+            }
+        }
+
+    img{
+        width: 100%;
+        height: 25.625rem;
+        object-fit: cover;
+    }
+}
+}
+@media screen and (max-width: 640px) {
+.about{
+    padding:0 1.5rem;
+.aboutItem{
+    width: 100%;
+}
+
+}
+}

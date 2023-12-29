@@ -4,6 +4,7 @@ import { CiFacebook ,CiTwitter ,CiInstagram ,CiYoutube, CiSearch} from "react-ic
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 import userImage from '../../assets/userImage.png'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -23,7 +24,9 @@ const Navbar = () => {
     </div>
     <div className={styles.topCenter}>
         <ul className={styles.list}>
-        <li>HOME</li>
+        <li>
+          {/* <Link  to='/'>HOME</Link> */}Home
+        </li>
           {!showMobileMenu && (
             <>
               <li>ABOUT</li>
