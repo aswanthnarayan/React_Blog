@@ -28,6 +28,10 @@
             font-size: 1.5rem;
             font-weight: 700;
             cursor: pointer;
+            a{
+            text-decoration: none;
+            color: inherit;
+            }
         }
         .timeStamp{
             font-size: .9rem;

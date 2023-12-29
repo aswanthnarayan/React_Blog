@@ -3,7 +3,7 @@ import styles from './Navbar.module.scss'
 import { CiFacebook ,CiTwitter ,CiInstagram ,CiYoutube, CiSearch} from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
-import userImage from '../../assets/userImage.png'
+import userImage from '../../assets/heroImage.jpg'
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -25,13 +25,15 @@ const Navbar = () => {
     <div className={styles.topCenter}>
         <ul className={styles.list}>
         <li>
-          {/* <Link  to='/'>HOME</Link> */}Home
+          <Link  to='/'>HOME</Link>
         </li>
           {!showMobileMenu && (
             <>
-              <li>ABOUT</li>
-              <li>CONTACT</li>
-              <li>WRITE</li>
+              <li>
+              <Link  to='/about'>ABOUT</Link>
+              </li>
+              <li><Link  to='/profile'>PROFILE</Link></li>
+              <li><Link  to='/post'>WRITE</Link></li>
               <li>LOGOUT</li>
             </>
           )}
@@ -45,9 +47,9 @@ const Navbar = () => {
     
         <div className={`${styles.mobileMenu} ${showMobileMenu ? styles.active: ''}`}>
           <ul>
-            <li>ABOUT</li>
-            <li>CONTACT</li>
-            <li>WRITE</li>
+            <li><Link  to='/about'>ABOUT</Link></li>
+            <li><Link  to='/profile'>PROFILE</Link></li>
+            <li><Link  to='/post'>WRITE</Link></li>
             <li>LOGOUT</li>
           </ul>
         </div>

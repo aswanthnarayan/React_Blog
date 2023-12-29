@@ -45,7 +45,9 @@
         align-items: center;
         gap: .8rem;
         img{
-            height: 1.5rem;
+            height: 2.5rem;
+            width: 2.5rem;
+            object-fit: cover;
             border-radius: 50%;
         }
     }
@@ -70,6 +72,10 @@
             gap: .5rem;
         li{
             list-style: none;
+            a{
+                text-decoration: none;
+                color: inherit;
+            }
         }
     }
 
@@ -93,10 +99,12 @@
         justify-content: flex-start;
         margin-right: 3.5rem;
         img{
-            height: 1.2rem;
+            height: 1.5rem;
+            width: 1.5rem;
             border-radius: 50%;
         }
     }
+
     .list li:nth-child(1){
         padding-left: .8rem;
     }
