@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_URL)
     console.log(err)
 });
 
-
+//express server
 app.listen('5500',()=>{
     console.log('server initialized')
 })
