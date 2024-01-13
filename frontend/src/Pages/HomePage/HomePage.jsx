@@ -9,6 +9,7 @@ import axios from 'axios'
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
 
+  //to fetch posts from db
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -26,7 +27,7 @@ const HomePage = () => {
     <>
     <Home/>
     <div className={styles.homePage}>
-      <Posts/>
+      <Posts posts={posts}/>
       <Sidebar/>
     </div>
     </>

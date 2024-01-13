@@ -5,3 +5,9 @@
     flex-wrap: wrap;
     gap: 2rem;
 }
+@media screen and (max-width: 640px) {
+    .posts{
+        width: 100%;
+       
+    }
+    }

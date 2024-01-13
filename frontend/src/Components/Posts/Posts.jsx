@@ -2,17 +2,17 @@ import React from 'react'
 import styles from './Posts.module.scss'
 import Post from './Post/Post'
 
-const Posts = () => {
+const Posts = ({posts}) => {
   return (
     <div className={styles.posts}>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
+      {
+        posts.map((post)=>
+           <Post post={post}/>
+        )
+      }
+      
     </div>
   )
 }
 
-export default Posts
+export default Posts;
