@@ -85,14 +85,14 @@ router.get('/:id',async (req,res)=>{
             posts = await Post.find({username:username})
         }
         else if(category){
-            posts = await Post.find({categories:{$in:[category]}}) //checking category wuiery in categories array on DB
+            posts = await Post.find({categories:{$in:[category]}}) //checking category quiery in categories array on DB
         }
         else{
             posts = await Post.find()
         }
         res.status(200).json(posts)
     } catch (error) {
-        res.status(500).json(error)
+        res.status(500).json({ error: 'Internal Server Error' });
     }
  })
 

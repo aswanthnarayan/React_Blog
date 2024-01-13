@@ -1,35 +1,10 @@
 import React, { useState } from 'react'
 import styles from './LoginPage.module.scss'
-import { Link , useNavigate} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const LoginPage = ({setisLoggedIn}) => {
-  const navigate = useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const handleLogin = (event) => {
-    event.preventDefault();
-
-    const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
-
-    let userExists = false;
-    for (const user of existingUsers) {
-      if (user.email === email && user.password === password) {
-        userExists = true;
-        break;
-      }
-    }
-
-    if (userExists) {
-        // localStorage.setItem('isLoggedIn', 'true');
-         setisLoggedIn(true)
-        //  localStorage.setItem('users', JSON.stringify(updatedUsers));
-         navigate('/');
-    } else {
-      alert('User does not exist. Please register.');
-      navigate('/register');
-    }
-  };
   
   return (
     <div className={styles.login}>

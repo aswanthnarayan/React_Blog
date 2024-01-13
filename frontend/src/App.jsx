@@ -12,19 +12,18 @@ import About from './Pages/AboutPage/About'
 
 
 const App = () => {
-  const [isLoggedIn, setisLoggedIn] = useState(false)
   return (
    
     <Router>
-    <Navbar/>
+    <Navbar />
     <Routes>
       {/* <Route exact path="/" element={<HomePage />} /> */}
       <Route
           exact
           path="/"
-          element={isLoggedIn ? <HomePage /> : <Navigate to="/login" />}
+          element={<HomePage />}
         />
-      <Route path="/login" element={<LoginPage setisLoggedIn={setisLoggedIn} />} />
+      <Route path="/login" element={<LoginPage/>} />
       <Route path="/register" element={<Register />} />
       <Route path="/about" element={<About />} />
       <Route path="/profile" element={<Profile />} />

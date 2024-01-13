@@ -6,7 +6,7 @@ import { IoMdClose } from "react-icons/io";
 import userImage from '../../assets/heroImage.jpg'
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = (isLoggedIn) => {
 
      const [showMobileMenu, setShowMobileMenu] = useState(false);
 
@@ -38,6 +38,7 @@ const Navbar = () => {
             </>
           )}
         </ul>
+        
     </div>
     <div className={styles.topRight}>
         <img src={userImage} alt="userImage" />

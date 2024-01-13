@@ -1,38 +1,12 @@
 import React, { useState } from 'react'
 import styles from './Register.module.scss'
-import { useNavigate ,Link } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 
 const Register = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-
-  const handleRegistration = (event) => {
-    event.preventDefault();
-    const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
-    let userExists = false;
-        for (const user of existingUsers) {
-          if (user.email === email) {
-            userExists = true;
-            break;
-          }
-        }
-    if (userExists) {
-      alert('Email already exists. Please use a different email.');
-      navigate('/login'); 
-    } else {
-      const newUser = { username, email, password };
-      const updatedUsers = [...existingUsers, newUser];
-      localStorage.setItem('users', JSON.stringify(updatedUsers));
-      alert('Registration successful!');
-      setUsername('');
-      setEmail('');
-      setPassword('');
-      navigate('/login'); 
-    }
-  };
 
 
   return (
