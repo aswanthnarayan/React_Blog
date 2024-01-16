@@ -51,6 +51,14 @@
     flex-direction: column;
     gap: 1.5rem;
 .para{
+             font-family: "Varela Round", Arial, Helvetica, sans-serif;
+            font-weight: 400;
+            line-height: 1.5rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
     &::first-letter{
         margin-left: .5rem;
         margin-right: .2rem;
@@ -63,3 +71,9 @@
 }
 
 }
+
+@media screen and (max-width: 640px) {
+    .SinglePost{
+        width: 100%;
+    }
+    }

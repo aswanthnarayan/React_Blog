@@ -1,17 +1,45 @@
-import React from 'react'
+import React, { useEffect ,useState} from 'react'
 import styles from './SinglePost.module.scss'
 import postImg from '../../assets/singlepost.jpeg'
 import { FiEdit } from "react-icons/fi";
 import { MdOutlineDeleteOutline } from "react-icons/md";
+import { useLocation } from 'react-router-dom';
+import axios from 'axios'
+
 
 
 
 const SinglePost = () => {
+
+const location = useLocation();
+let path = (location.pathname.split('/')[2]);
+
+const [singleP, setsingleP] = useState({})
+
+useEffect(()=>{
+  const singlePost = async ()=>{
+    try {
+      const response = await axios.get('/api/posts/'+path);
+      console.log(response.data);
+      setsingleP(response.data)
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    }
+  }
+  singlePost();
+},[path])
+
   return (
     <div className={styles.SinglePost}>
-        <img src={postImg}alt="singlePostImage" />
+      {
+        singleP.photo ? (
+          <img src={singleP.photo} alt="singlePostImage" />
+        ):(
+          <img src={postImg} alt="singlePostImage" />
+        )
+      }     
         <div className={styles.heading}>
-            <p>Lorem ipsum dolor sit amet</p>
+            <p>{singleP.title}</p>
             <div className={styles.icons}>
             <FiEdit className={styles.icon}/>
             <MdOutlineDeleteOutline className={`${styles.icon} ${styles.deletebtn}`} />
@@ -19,11 +47,10 @@ const SinglePost = () => {
      </div>
             <div className={styles.postDetails}>
                 <div className={styles.postInfo}>
-                <p>Author:Nick</p>
-                <p>1 hour Ago</p>
+                <p>{singleP.username}</p>
+                <p>{new Date(singleP.createdAt).toDateString()}</p>
                 </div>
-                <p className={styles.para}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis et magni nisi consequatur, culpa minus ad odio at molestiae, officia error fuga ut sequi. Deserunt error doloribus optio provident debitis enim adipisci, molestias facilis reprehenderit deleniti quaerat reiciendis laboriosam quisquam nostrum consequatur perspiciatis at! Inventore sed ut molestiae debitis sit, nulla laboriosam repellendus commodi perspiciatis nam deleniti ullam at quis natus in, maiores quia asperiores sint tempore. Cum molestiae officia accusamus repudiandae esse nesciunt itaque facere atque ipsum veritatis modi temporibus accusantium iure ut blanditiis amet, numquam maxime totam autem! Aut necessitatibus officia aspernatur quisquam eius optio iure atque, debitis dignissimos totam, numquam quod laboriosam. Tenetur suscipit quam nesciunt hic obcaecati dolor doloribus at sint eos. Quia mollitia in libero, blanditiis at, earum deleniti temporibus quae culpa dolor quasi facere alias eaque, suscipit perferendis. Corrupti tempora ut neque ab, distinctio eaque deserunt repellat reprehenderit iusto vero esse id odit illum.</p>
-              
+                <p className={styles.para}>{singleP.desc}</p>
             </div>
     </div>
   )

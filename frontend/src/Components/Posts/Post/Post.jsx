@@ -4,6 +4,7 @@ import postImg from '../../../assets/singlepost.jpeg'
 import { Link } from 'react-router-dom'
 
 const Post = ({post}) => {
+  // console.log(post)
   return (
     <div className={styles.post}>
       {
@@ -17,11 +18,11 @@ const Post = ({post}) => {
             <div className={styles.postcategory}>
             {
                 post.categories.map((cat)=>(
-                  <p>{cat}</p>
+                  <p >{cat}</p>
                 ))
               }
             </div>
-            <p className={styles.postTitle}><Link to='./post/:postId'>{post.title}</Link></p>
+            <p className={styles.postTitle}><Link to={`/post/${post._id}`}>{post.title}</Link></p>
             <p className={styles.timeStamp}> {new Date(post.createdAt).toDateString()}</p>
             <p className={styles.postContent}>{post.desc}</p>
         </div>
