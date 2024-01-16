@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import styles from './Sidebar.module.scss'
 import heroImage from '../../assets/heroImage.jpg'
 import { CiFacebook ,CiTwitter ,CiInstagram ,CiYoutube, CiSearch} from "react-icons/ci";
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
+
+  //fetch categories for sidebar
+const [cats, setcats] = useState([])
+
+  useEffect(()=>{
+    const getCat = async ()=>{
+      const categories = await axios.get('/api/categories');
+      console.log(categories.data)
+      setcats(categories.data)
+    }
+    getCat();
+  },[])
+
   return (
     <div className={styles.sideBar}>
       <div className={styles.sideBarItem}>
@@ -14,13 +29,13 @@ const Sidebar = () => {
       <div className={styles.sideBarItem}>
       <p className={styles.sideBarTitle}>CATEGORIES</p>
       <ul className={styles.sideBarList}>
-        <li className={styles.sideBarListItem}>Life</li>
-        <li className={styles.sideBarListItem}>Tech</li>
-        <li className={styles.sideBarListItem}>Music</li>
-        <li className={styles.sideBarListItem}>Sports</li>
-        <li className={styles.sideBarListItem}>Cinima</li>
-        <li className={styles.sideBarListItem}>Books</li>
-
+        {
+          cats.map((cat)=>(
+              <Link to={`/?cat=${cat.name}`}>
+             <li key={cat._id} className={styles.sideBarListItem}>{cat.name}</li>
+              </Link>
+            ))
+        }
       </ul>
 </div>
 <div className={styles.sideBarItem}>
