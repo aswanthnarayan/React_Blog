@@ -1,14 +1,19 @@
-import React,{ useState } from 'react'
+import React,{ useContext, useState } from 'react'
 import styles from './Navbar.module.scss'
 import { CiFacebook ,CiTwitter ,CiInstagram ,CiYoutube, CiSearch} from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 import userImage from '../../assets/heroImage.jpg'
 import { Link } from 'react-router-dom';
+import { Context } from '../../context/Context';
 
 const Navbar = (isLoggedIn) => {
-
+    const { user, dispatch } = useContext(Context);
      const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+  const handleLogout = ()=>{
+    dispatch({ type: "LOGOUT" });
+  }
 
   const toggleMenu = () => {
     setShowMobileMenu(!showMobileMenu);
@@ -34,25 +39,32 @@ const Navbar = (isLoggedIn) => {
               </li>
               <li><Link  to='/profile'>PROFILE</Link></li>
               <li><Link  to='/post'>WRITE</Link></li>
-              <li><Link to='/login'>LOGOUT</Link></li>
+              {
+              user?<li onClick={handleLogout}><Link to='/login'>LOGOUT</Link></li>
+               :<Link to= '/login' ><button className={styles.loginButton}>Login</button></Link>
+              }
             </>
           )}
         </ul>
         
     </div>
     <div className={styles.topRight}>
-        <img src={userImage} alt="userImage" />
+        {user&&<img src={userImage} alt="userImage" />}
         <CiSearch className={styles.icons}/>
     </div>
     {!showMobileMenu ? <RxHamburgerMenu className={styles.hamburgerMenu} onClick={toggleMenu} />:<IoMdClose className={styles.hamburgerMenu} onClick={toggleMenu}/> }
     
         <div className={`${styles.mobileMenu} ${showMobileMenu ? styles.active: ''}`}>
-          <ul>
+         { user ?<ul>
             <li><Link  to='/about'>ABOUT</Link></li>
             <li><Link  to='/profile'>PROFILE</Link></li>
             <li><Link  to='/post'>WRITE</Link></li>
-            <li><Link  to='/login'>LOGOUT</Link></li>
-          </ul>
+             <li onClick={handleLogout}><Link to='/login'>LOGOUT</Link></li>
+             
+          </ul>:<ul>
+              <Link to= '/login' ><button className={styles.login} >Login</button></Link> 
+              <Link to= '/register' ><button className={styles.register}>Register</button></Link>
+            </ul>}
         </div>
     
     </div>

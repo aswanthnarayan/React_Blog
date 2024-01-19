@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react'
 import styles from './LoginPage.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Context } from '../../context/Context';
 import axios from 'axios';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const {dispatch,isFetching} = useContext(Context)
@@ -17,11 +18,12 @@ const LoginPage = () => {
         password:password,
       })
       dispatch({ type: 'LOGIN_SUCSESS', payload: response.data });
+      navigate('/')
     } catch (error) {
        dispatch({ type: 'LOGIN_FAILURE', payload: error.message });
     }
   }
-  console.log(isFetching)
+  // console.log(isFetching)
   return (
     <div className={styles.login}>
     <p className={styles.loginTitle}>Login</p>
