@@ -1,14 +1,27 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from './LoginPage.module.scss'
 import { Link } from 'react-router-dom'
+import { Context } from '../../context/Context';
+import axios from 'axios';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleLogin=(e)=>{
+  const {dispatch,isFetching} = useContext(Context)
+  const handleLogin=async (e)=>{
     e.preventDefault();
+    dispatch({ type:"LOGIN_START" })
+    try {
+      const response = await axios.post('api/auth/login',{
+        email:email,
+        password:password,
+      })
+      dispatch({ type: 'LOGIN_SUCSESS', payload: response.data });
+    } catch (error) {
+       dispatch({ type: 'LOGIN_FAILURE', payload: error.message });
+    }
   }
-  
+  console.log(isFetching)
   return (
     <div className={styles.login}>
     <p className={styles.loginTitle}>Login</p>
@@ -19,9 +32,9 @@ const LoginPage = () => {
       <label>Password</label>
       <input className={styles.loginInput} type="password" placeholder="Enter your password..." value={password}
           onChange={(e) => setPassword(e.target.value)}/>
-      <button type="submit" className={styles.loginButton}>Login</button>
+      <button type="submit" className={styles.loginButton} >Login</button>
     </form>
-      <button className={styles.loginRegisterButton}> <Link to='/register'>Register</Link></button>
+      <button className={styles.loginRegisterButton} > <Link to='/register'>Register</Link></button>
   </div>
   )
 }
