@@ -13,7 +13,7 @@ const [cats, setcats] = useState([])
   useEffect(()=>{
     const getCat = async ()=>{
       const categories = await axios.get('/api/categories');
-      console.log(categories.data)
+      // console.log(categories.data)
       setcats(categories.data)
     }
     getCat();
@@ -31,8 +31,8 @@ const [cats, setcats] = useState([])
       <ul className={styles.sideBarList}>
         {
           cats.map((cat)=>(
-              <Link to={`/?cat=${cat.name}`}>
-             <li key={cat._id} className={styles.sideBarListItem}>{cat.name}</li>
+              <Link  key={cat._id} to={`/?cat=${cat.name}`}>
+                 <li className={styles.sideBarListItem}>{cat.name}</li>
               </Link>
             ))
         }

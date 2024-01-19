@@ -1,13 +1,27 @@
 import React, { useState } from 'react'
 import styles from './Register.module.scss'
-import {Link } from 'react-router-dom';
+import {Link ,useNavigate} from 'react-router-dom';
+import axios from 'axios'
 
 const Register = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const handleRegistration = async(e)=>{
+    e.preventDefault();
+    try {
+      const response = await axios.post('api/auth/register',{
+        username,
+        email,
+        password,
+      })
+      // console.log(response);
+      response.data && navigate('/login')
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div className={styles.register}>

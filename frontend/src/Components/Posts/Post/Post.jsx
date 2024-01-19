@@ -17,8 +17,8 @@ const Post = ({post}) => {
         <div className={styles.postDetails}>
             <div className={styles.postcategory}>
             {
-                post.categories.map((cat)=>(
-                  <p >{cat}</p>
+                post.categories.map((cat,index)=>(
+                  <p key={index}>{cat}</p>
                 ))
               }
             </div>

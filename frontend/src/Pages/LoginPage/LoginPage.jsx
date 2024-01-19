@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import styles from './LoginPage.module.scss'
 import { Link } from 'react-router-dom'
 
-const LoginPage = ({setisLoggedIn}) => {
+const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const handleLogin=(e)=>{
+    e.preventDefault();
+  }
   
   return (
     <div className={styles.login}>
