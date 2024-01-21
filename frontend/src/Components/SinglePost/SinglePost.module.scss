@@ -12,6 +12,7 @@
     }
     .heading{
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
         p{
@@ -20,6 +21,7 @@
             font-size: 2rem;
         }
         .icons{
+            align-self: flex-end;
             margin-right: 1rem;
             display: flex;
             cursor: pointer;
@@ -34,16 +36,30 @@
             font-size: 1.5rem;
             }
         }
+        .updateInput{
+            text-align: center;
+            font-size: 1.9rem;
+            border: none;
+            padding: 1.25rem;
+            width: 100%;
+            &:focus{
+             outline-style: none;
+            }
+        }
     }
 
-    .postInfo{
+    .postInfo {
         display: flex;
         justify-content: space-between;
         color: #be9656;
- 
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
     }
 
 .postDetails{
+    position: relative;
     color: #666;
     line-height: 1.5rem;
     font-family: "Varela Round", Arial, Helvetica, sans-serif;
@@ -67,7 +83,27 @@
     }
 
 }
+.updateContent{
+    padding: 1.25rem;
+            height: 40vh;
+            width: 70vw; 
+            border: none;
+            &:focus{
+                outline-style: none;
+               }
+}
 
+
+}
+
+.updateSubmit{
+    align-self: flex-end;
+    width: 8vw;
+    background-color: teal;
+    color: #fff;
+    padding: .8rem;
+    border: none;
+    border-radius: .5rem;
 }
 
 }

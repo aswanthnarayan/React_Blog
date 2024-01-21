@@ -11,30 +11,47 @@ import { Context } from '../../context/Context';
 
 
 const SinglePost = () => {
+
   const navigate = useNavigate()
   const PF = "http://localhost:3300/uploads/";
   const {user} =useContext(Context);
+  const location = useLocation();
+
+  //states for fetch the post 
+  const [singleP, setsingleP] = useState({})
+
+  //states for edit the post 
+const [updatedTitle, setupdatedTitle] = useState('');
+const [updatedDesc, setupdatedDesc] = useState('');
+const [updateMode, setupdateMode] = useState(false)
+
+
 
 // to find post id for fetching single post
-const location = useLocation();
+
 let path = (location.pathname.split('/')[2]);
 
-const [singleP, setsingleP] = useState({})
 
 // fetch single posts
+
 useEffect(()=>{
   const singlePost = async ()=>{
     try {
       const response = await axios.get('/api/posts/'+path);
       // console.log(response.data);
       setsingleP(response.data)
+      //to update the post 
+      setupdatedTitle(response.data.title);
+      setupdatedDesc(response.data.desc)
     } catch (error) {
       console.error('Error fetching posts:', error);
     }
   }
   singlePost();
-},[path])
+},[path,updateMode])
 
+
+//to delete the post
 
 const handleClick = async()=>{
   try {
@@ -44,6 +61,23 @@ const handleClick = async()=>{
   } catch (error) {
     console.log(error)
   }      
+}
+
+
+//to update the post
+
+const handleUpdate = async()=>{
+  try {
+   const res= await axios.put(`/api/posts/${singleP._id}`, {
+      username: user.username,
+      title: updatedTitle,
+      desc: updatedDesc,
+    });
+    console.log(res)
+    setupdateMode(false);
+  } catch (error) {
+    console.log(error)
+  }
 }
 
   return (
@@ -56,9 +90,12 @@ const handleClick = async()=>{
         )
       }     
         <div className={styles.heading}>
+           {
+            updateMode ? <input className={styles.updateInput} type='text' value={updatedTitle} onChange={(e)=>setupdatedTitle(e.target.value)}></input>:
             <p>{singleP.title}</p>
-       {singleP.username === user?.username && <div className={styles.icons}>
-            <FiEdit className={styles.icon}/>
+           }
+             {singleP.username === user?.username && <div className={styles.icons}>
+            <FiEdit className={styles.icon} onClick={()=>setupdateMode(true)}/>
             <MdOutlineDeleteOutline className={`${styles.icon} ${styles.deletebtn}`} onClick={handleClick} />
      </div>}
      </div>
@@ -69,8 +106,14 @@ const handleClick = async()=>{
                 </Link>
                 <p>{new Date(singleP.createdAt).toDateString()}</p>
                 </div>
-                <p className={styles.para}>{singleP.desc}</p>
+                {
+                  updateMode?<textarea className={styles.updateContent} value={updatedDesc} cols="30" rows="10" onChange={(e)=>setupdatedDesc(e.target.value)}></textarea>:
+                    <p className={styles.para}>{singleP.desc}</p>
+                }
             </div>
+            {
+            updateMode&&<button className={styles.updateSubmit} onClick={handleUpdate}>Update</button>
+            }
     </div>
   )
 }
