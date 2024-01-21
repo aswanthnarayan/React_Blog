@@ -4,12 +4,16 @@ import postImg from '../../../assets/singlepost.jpeg'
 import { Link } from 'react-router-dom'
 
 const Post = ({post}) => {
-  // console.log(post)
+// console.log(post)
+const PF = "http://localhost:3300/uploads/"
+// console.log(post.photo)
   return (
+    
     <div className={styles.post}>
+      
       {
-        post.photo ? (
-          <img src={post.photo} alt="postImg" />
+        post.photo ?(
+          <img src={PF + post.photo} alt="postImg" />
         ):(
           <img src={postImg} alt="postImg" />
         )

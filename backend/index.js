@@ -3,6 +3,7 @@ const dotenv = require('dotenv');//initialize dotenv
 const mongoose = require('mongoose'); //initialize mongoose
 const multer = require('multer');
 const cors = require('cors');
+const path = require("path");
 
 
 const authRoute = require('./routes/auth') 
@@ -18,6 +19,9 @@ const app= express();
 app.use(cors());
 app.use(express.json())
 
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+
+
 mongoose.connect(process.env.MONGO_URL)
 .then(console.log('connected to mongo'))
 .catch((err)=>{
@@ -28,7 +32,7 @@ mongoose.connect(process.env.MONGO_URL)
 //multer for file upload
 const storage = multer.diskStorage({
     destination:(req,file,cb)=>{
-        cb(null,'Uploads')
+        cb(null,'uploads')
     },
     filename:(req,file,cb)=>{
         cb(null,req.body.name)
@@ -51,3 +55,4 @@ app.use('/api/categories',CategoriesRoute)
 app.listen('3300',(req,res)=>{
     console.log('server initialized')
 })
+

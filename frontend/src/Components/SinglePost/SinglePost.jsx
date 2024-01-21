@@ -10,6 +10,8 @@ import axios from 'axios'
 
 
 const SinglePost = () => {
+  const PF = "http://localhost:3300/uploads/";
+
 
 // to find post id for fetching single post
 const location = useLocation();
@@ -35,7 +37,7 @@ useEffect(()=>{
     <div className={styles.SinglePost}>
       {
         singleP.photo ? (
-          <img src={singleP.photo} alt="singlePostImage" />
+          <img src={PF + singleP.photo} alt="singlePostImage" />
         ):(
           <img src={postImg} alt="singlePostImage" />
         )

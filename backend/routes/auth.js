@@ -31,7 +31,7 @@ router.post('/register',async (req,res)=>{
 
 router.post('/login',async(req,res)=>{
 try {
-    const user =await User.findOne({username:req.body.username}); // checking for user existed or not
+    const user =await User.findOne({email:req.body.email}); // checking for user existed or not
     if (!user) {
         return res.status(400).json("Wrong Credentials!"); // send response and return to exit the function
       }
