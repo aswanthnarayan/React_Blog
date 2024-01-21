@@ -43,7 +43,7 @@ router.put('/:id',async (req,res)=>{
 })
 
 
-//DELETE USER/ACCOUNT
+//DELETE post
 
 router.delete("/:id", async (req, res) => {
         try {
