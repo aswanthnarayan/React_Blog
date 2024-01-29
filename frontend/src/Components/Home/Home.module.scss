@@ -9,8 +9,10 @@
         font-family: 'lora', sans-serif;
         font-style: italic;
         position: absolute;
-        left: 45%;
-        top: 18%;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
         .smHead{
             font-family: 'Josefin Sans', sans-serif;
             font-size: 1.5rem;
@@ -33,7 +35,7 @@
 @media screen and (max-width: 640px) {
     .home{
         .heading{
-            left: 25%;
+            left: 50%;
             top: 25%;
         }
         img{

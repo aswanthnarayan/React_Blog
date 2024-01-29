@@ -60,7 +60,7 @@ useEffect(()=>{
 
 //to delete the post
 
-const handleClick = async()=>{
+const handleDelete = async()=>{
   try {
     await axios.delete(`/api/posts/${singleP._id}`, {data: { username: user.username }});
   //  console.log(res);
@@ -104,13 +104,13 @@ const handleUpdate = async()=>{
            }
              {singleP.username === user.username && <div className={styles.icons}>
             <FiEdit className={styles.icon} onClick={()=>setupdateMode(true)}/>
-            <MdOutlineDeleteOutline className={`${styles.icon} ${styles.deletebtn}`} onClick={handleClick}/>
+            <MdOutlineDeleteOutline className={`${styles.icon} ${styles.deletebtn}`} onClick={handleDelete}/>
      </div>}
      </div>
             <div className={styles.postDetails}>
                 <div className={styles.postInfo}>
                 <Link to={`/?user=${user.username}`}> 
-                <p>{user.username} </p>
+                <p>{singleP.username} </p>
                 </Link>
                 <p>{new Date(user.createdAt).toDateString()}</p>
                 </div>

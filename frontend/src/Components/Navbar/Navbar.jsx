@@ -37,9 +37,10 @@ const Navbar = (isLoggedIn) => {
         </li>
           {!showMobileMenu && (
             <>
-              <li>
+            
+              {/* <li>
               <Link  to='/about'>ABOUT</Link>
-              </li>
+              </li> */}
               <li><Link  to='/profile'>PROFILE</Link></li>
               <li><Link  to='/post'>WRITE</Link></li>
               {
@@ -61,7 +62,7 @@ const Navbar = (isLoggedIn) => {
     
         <div className={`${styles.mobileMenu} ${showMobileMenu ? styles.active: ''}`}>
          { user ?<ul>
-            <li><Link  to='/about'>ABOUT</Link></li>
+            {/* <li><Link  to='/about'>ABOUT</Link></li> */}
             <li><Link  to='/profile'>PROFILE</Link></li>
             <li><Link  to='/post'>WRITE</Link></li>
              <li onClick={handleLogout}><Link to='/login'>LOGOUT</Link></li>
