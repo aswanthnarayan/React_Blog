@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// const User = require('../models/User');
+ const User = require('../models/User');
 const Post = require('../models/Post');
 
 
@@ -23,6 +23,9 @@ router.post('/',async (req,res)=>{
 router.put('/:id',async (req,res)=>{
     try {
         const post = await Post.findById(req.params.id);
+        console.log(post);
+        console.log("Post Owner:", post.username);
+        console.log("Requesting User:", req.body.username);
         if(post.username === req.body.username){
             try {
                   const updatedPost = await Post.findByIdAndUpdate(req.params.id ,{
@@ -64,7 +67,6 @@ router.delete("/:id", async (req, res) => {
 
  //GET USER DATA
 
-
 router.get('/:id',async (req,res)=>{
     try {
         const post = await Post.findById(req.params.id)
@@ -96,5 +98,25 @@ router.get('/:id',async (req,res)=>{
     }
  })
 
+
+
+  // UPDATE USERNAME IN POSTS
+router.put('/user/:oldUsername', async (req, res) => {
+    try {
+      const oldUsername = req.params.oldUsername;
+      const newUsername = req.body.newUsername;
+    //   console.log(oldUsername);
+    //   console.log(newUsername);
+  
+      // Update posts with the new username
+      const updateResult = await Post.updateMany({ username: oldUsername }, { $set: { username: newUsername } });
+      console.log(updateResult);
+      res.status(200).json("Username updated in posts");
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  });
+  
+ 
 
 module.exports=router

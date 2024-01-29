@@ -23,9 +23,7 @@ const SinglePost = () => {
   //states for edit the post 
 const [updatedTitle, setupdatedTitle] = useState('');
 const [updatedDesc, setupdatedDesc] = useState('');
-const [updateMode, setupdateMode] = useState(false)
-
-
+const [updateMode, setupdateMode] = useState(false);
 
 // to find post id for fetching single post
 
@@ -34,21 +32,30 @@ let path = (location.pathname.split('/')[2]);
 
 // fetch single posts
 
+
 useEffect(()=>{
   const singlePost = async ()=>{
     try {
       const response = await axios.get('/api/posts/'+path);
-      // console.log(response.data);
-      setsingleP(response.data)
-      //to update the post 
-      setupdatedTitle(response.data.title);
-      setupdatedDesc(response.data.desc)
+       const modifiedData = {
+        ...response.data,
+        username: user.username,
+      };
+
+      // Set the state with the modified data
+      setsingleP(modifiedData);
+
+    
+      // Update the post for editing
+      setupdatedTitle(modifiedData.title);
+      setupdatedDesc(modifiedData.desc);
+
     } catch (error) {
       console.error('Error fetching posts:', error);
     }
   }
   singlePost();
-},[path,updateMode])
+},[path,updateMode,user])
 
 
 //to delete the post
@@ -67,13 +74,14 @@ const handleClick = async()=>{
 //to update the post
 
 const handleUpdate = async()=>{
-  try {
+  try {  
    const res= await axios.put(`/api/posts/${singleP._id}`, {
       username: user.username,
       title: updatedTitle,
       desc: updatedDesc,
     });
-    console.log(res)
+
+    
     setupdateMode(false);
   } catch (error) {
     console.log(error)
@@ -94,17 +102,17 @@ const handleUpdate = async()=>{
             updateMode ? <input className={styles.updateInput} type='text' value={updatedTitle} onChange={(e)=>setupdatedTitle(e.target.value)}></input>:
             <p>{singleP.title}</p>
            }
-             {singleP.username === user?.username && <div className={styles.icons}>
+             {singleP.username === user.username && <div className={styles.icons}>
             <FiEdit className={styles.icon} onClick={()=>setupdateMode(true)}/>
-            <MdOutlineDeleteOutline className={`${styles.icon} ${styles.deletebtn}`} onClick={handleClick} />
+            <MdOutlineDeleteOutline className={`${styles.icon} ${styles.deletebtn}`} onClick={handleClick}/>
      </div>}
      </div>
             <div className={styles.postDetails}>
                 <div className={styles.postInfo}>
-                <Link to={`/?user=${singleP.username}`}> 
-                <p>{singleP.username} </p>
+                <Link to={`/?user=${user.username}`}> 
+                <p>{user.username} </p>
                 </Link>
-                <p>{new Date(singleP.createdAt).toDateString()}</p>
+                <p>{new Date(user.createdAt).toDateString()}</p>
                 </div>
                 {
                   updateMode?<textarea className={styles.updateContent} value={updatedDesc} cols="30" rows="10" onChange={(e)=>setupdatedDesc(e.target.value)}></textarea>:

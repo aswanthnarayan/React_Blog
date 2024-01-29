@@ -17,7 +17,7 @@ const HomePage = () => {
     const fetchPosts = async () => {
       try {
         const response = await axios.get('/api/posts'+search);
-        // console.log(response.data);
+       
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching posts:', error);

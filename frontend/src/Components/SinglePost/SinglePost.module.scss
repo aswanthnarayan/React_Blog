@@ -111,5 +111,11 @@
 @media screen and (max-width: 640px) {
     .SinglePost{
         width: 100%;
+
+        .updateSubmit{
+            align-self: center;
+            width: 8rem;
+        }
+
     }
     }

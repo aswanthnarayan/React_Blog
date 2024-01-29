@@ -8,6 +8,9 @@ import { Link } from 'react-router-dom';
 import { Context } from '../../context/Context';
 
 const Navbar = (isLoggedIn) => {
+
+  const PF = "http://localhost:3300/uploads/";
+
     const { user, dispatch } = useContext(Context);
      const [showMobileMenu, setShowMobileMenu] = useState(false);
 
@@ -49,7 +52,9 @@ const Navbar = (isLoggedIn) => {
         
     </div>
     <div className={styles.topRight}>
-        {user&&<img src={userImage} alt="userImage" />}
+      <Link to={'/profile'}>
+      {user&&user.profilePic?<img src={PF+user.profilePic} alt="userImage" />:<img src={userImage} alt="userImage" />}
+        </Link>
         <CiSearch className={styles.icons}/>
     </div>
     {!showMobileMenu ? <RxHamburgerMenu className={styles.hamburgerMenu} onClick={toggleMenu} />:<IoMdClose className={styles.hamburgerMenu} onClick={toggleMenu}/> }

@@ -19,9 +19,11 @@
             flex-wrap: wrap;
             align-items: center;
             width: 100%;
-            li{
+            a{
+                text-decoration: none;
                 width: 50%;
                 margin-bottom: 1rem;
+                color: inherit;
             }
         }
 
