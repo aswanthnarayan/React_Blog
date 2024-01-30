@@ -17,12 +17,12 @@ router.post("/", async (req, res) => {
 // GET ALL Categories
 
 router.get("/", async (req, res) => {
-    try {
-      const cats = await Categories.find();
-      res.status(200).json(cats);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
+  try {
+    const cats = await Categories.find();
+    res.status(200).json(cats);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

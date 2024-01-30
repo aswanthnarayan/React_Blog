@@ -1,9 +1,10 @@
 .profile {
     display: flex;
-    height: 90vh;
+    justify-content: center;
+    width: 100%;
 
     .updateContainer {
-        flex: 9;
+        width: 80%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -13,10 +14,12 @@
         .updateAccount {
             display: flex;
             justify-content: space-between;
-            p{
+
+            p {
                 font-size: 1.5rem;
                 color: teal;
             }
+
             button {
                 width: 9.5rem;
                 border: none;
@@ -34,9 +37,10 @@
 
             img {
                 width: 9.5rem;
-                border-radius:.5rem;
+                border-radius: .5rem;
             }
-            .dpEdit{
+
+            .dpEdit {
                 font-size: 1.5rem;
                 color: teal;
             }
@@ -70,7 +74,7 @@
             }
         }
 
-        .updated{
+        .updated {
             text-align: center;
             color: green;
             margin-top: 1rem;
@@ -82,11 +86,12 @@
 
 @media screen and (max-width: 640px) {
     .profile {
-    width: 100%;
+        width: 100%;
 
-.updateContainer {
-    padding: 1.5rem;
-}
+        .updateContainer {
+            width: 100%;
+            padding: 1rem;
+        }
     }
 
 }

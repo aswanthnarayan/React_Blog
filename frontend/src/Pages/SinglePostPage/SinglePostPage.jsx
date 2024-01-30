@@ -6,8 +6,8 @@ import SinglePost from '../../Components/SinglePost/SinglePost'
 const SinglePostPage = () => {
   return (
     <div className={styles.SinglePostPage}>
-        <SinglePost/>
-        <Sidebar/>
+      <SinglePost />
+      <Sidebar />
     </div>
   )
 }

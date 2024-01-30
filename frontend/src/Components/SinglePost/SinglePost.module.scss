@@ -1,49 +1,58 @@
-.SinglePost{
+.SinglePost {
     flex: 9;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    img{
+
+    img {
         width: 100%;
         height: 18.75rem;
         object-fit: cover;
         border-radius: .5rem;
     }
-    .heading{
+
+    .heading {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        p{
+
+        p {
             font-family: "Lora", sans-serif;
             margin: 0 auto;
             font-size: 2rem;
         }
-        .icons{
+
+        .icons {
             align-self: flex-end;
             margin-right: 1rem;
             display: flex;
             cursor: pointer;
             gap: 1rem;
-            :first-child{
+
+            :first-child {
                 color: teal;
             }
-            .deletebtn{
+
+            .deletebtn {
                 color: tomato;
             }
-            .icon{
-            font-size: 1.5rem;
+
+            .icon {
+                font-size: 1.5rem;
             }
         }
-        .updateInput{
+
+        .updateInput {
             text-align: center;
             font-size: 1.9rem;
             border: none;
             padding: 1.25rem;
             width: 100%;
-            &:focus{
-             outline-style: none;
+
+            &:focus {
+                outline-style: none;
             }
         }
     }
@@ -52,22 +61,24 @@
         display: flex;
         justify-content: space-between;
         color: #be9656;
-        a{
+
+        a {
             text-decoration: none;
             color: inherit;
         }
     }
 
-.postDetails{
-    position: relative;
-    color: #666;
-    line-height: 1.5rem;
-    font-family: "Varela Round", Arial, Helvetica, sans-serif;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-.para{
-             font-family: "Varela Round", Arial, Helvetica, sans-serif;
+    .postDetails {
+        position: relative;
+        color: #666;
+        line-height: 1.5rem;
+        font-family: "Varela Round", Arial, Helvetica, sans-serif;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .para {
+            font-family: "Varela Round", Arial, Helvetica, sans-serif;
             font-weight: 400;
             line-height: 1.5rem;
             overflow: hidden;
@@ -75,47 +86,50 @@
             display: -webkit-box;
             -webkit-line-clamp: 5;
             -webkit-box-orient: vertical;
-    &::first-letter{
-        margin-left: .5rem;
-        margin-right: .2rem;
-        font-size: 2rem;
-        font-weight: 600;
+
+            &::first-letter {
+                margin-left: .5rem;
+                margin-right: .2rem;
+                font-size: 2rem;
+                font-weight: 600;
+            }
+
+        }
+
+        .updateContent {
+            padding: 1.25rem;
+            height: 40vh;
+            width: 70vw;
+            border: none;
+
+            &:focus {
+                outline-style: none;
+            }
+        }
+
+
     }
 
-}
-.updateContent{
-    padding: 1.25rem;
-            height: 40vh;
-            width: 70vw; 
-            border: none;
-            &:focus{
-                outline-style: none;
-               }
-}
-
-
-}
-
-.updateSubmit{
-    align-self: flex-end;
-    width: 8vw;
-    background-color: teal;
-    color: #fff;
-    padding: .8rem;
-    border: none;
-    border-radius: .5rem;
-}
+    .updateSubmit {
+        align-self: flex-end;
+        width: 8vw;
+        background-color: teal;
+        color: #fff;
+        padding: .8rem;
+        border: none;
+        border-radius: .5rem;
+    }
 
 }
 
 @media screen and (max-width: 640px) {
-    .SinglePost{
+    .SinglePost {
         width: 100%;
 
-        .updateSubmit{
+        .updateSubmit {
             align-self: center;
             width: 8rem;
         }
 
     }
-    }
+}
