@@ -28,7 +28,7 @@ const App = () => {
         />
       <Route path="/login" element={<LoginPage/>} />
       <Route path="/register" element={<Register />} />
-      {/* <Route path="/about" element={!user ? <Navigate to="/" /> : <About />}  /> */}
+      <Route path="/about" element={!user ? <Navigate to="/" /> : <About />}  />
       <Route path="/profile" element={!user ? <Navigate to="/" /> : <Profile />} />
       <Route path="/post" element={!user ? <Navigate to="/" /> : <WritePage />} />
       <Route path="/post/:postId" element={<SinglePostPage />} />
