@@ -8,36 +8,36 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {dispatch,isFetching} = useContext(Context)
-  const handleLogin=async (e)=>{
+  const { dispatch, isFetching } = useContext(Context)
+  const handleLogin = async (e) => {
     e.preventDefault();
-    dispatch({ type:"LOGIN_START" })
+    dispatch({ type: "LOGIN_START" })
     try {
-      const response = await axios.post('api/auth/login',{
-        email:email,
-        password:password,
+      const response = await axios.post('api/auth/login', {
+        email: email,
+        password: password,
       })
       dispatch({ type: 'LOGIN_SUCSESS', payload: response.data });
       navigate('/')
     } catch (error) {
-       dispatch({ type: 'LOGIN_FAILURE', payload: error.message });
+      dispatch({ type: 'LOGIN_FAILURE', payload: error.message });
     }
   }
   // console.log(isFetching)
   return (
     <div className={styles.login}>
-    <p className={styles.loginTitle}>Login</p>
-    <form className={styles.loginForm} onSubmit={handleLogin}>
-      <label >Email</label>
-      <input className={styles.loginInput} type="email" placeholder="Enter your email..." value={email}
+      <p className={styles.loginTitle}>Login</p>
+      <form className={styles.loginForm} onSubmit={handleLogin}>
+        <label >Email</label>
+        <input className={styles.loginInput} type="email" placeholder="Enter your email..." value={email}
           onChange={(e) => setEmail(e.target.value)} />
-      <label>Password</label>
-      <input className={styles.loginInput} type="password" placeholder="Enter your password..." value={password}
-          onChange={(e) => setPassword(e.target.value)}/>
-      <button type="submit" className={styles.loginButton} >Login</button>
-    </form>
+        <label>Password</label>
+        <input className={styles.loginInput} type="password" placeholder="Enter your password..." value={password}
+          onChange={(e) => setPassword(e.target.value)} />
+        <button type="submit" className={styles.loginButton} >Login</button>
+      </form>
       <button className={styles.loginRegisterButton} > <Link to='/register'>Register</Link></button>
-  </div>
+    </div>
   )
 }
 
