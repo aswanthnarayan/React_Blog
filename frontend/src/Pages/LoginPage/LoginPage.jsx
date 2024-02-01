@@ -8,6 +8,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error,setError]=useState(false)
   const { dispatch, isFetching } = useContext(Context)
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -20,6 +21,7 @@ const LoginPage = () => {
       dispatch({ type: 'LOGIN_SUCSESS', payload: response.data });
       navigate('/')
     } catch (error) {
+      setError(true);
       dispatch({ type: 'LOGIN_FAILURE', payload: error.message });
     }
   }
@@ -37,6 +39,9 @@ const LoginPage = () => {
         <button type="submit" className={styles.loginButton} >Login</button>
       </form>
       <button className={styles.loginRegisterButton} > <Link to='/register'>Register</Link></button>
+      {
+        error&&<span className={styles.error}>Wrong Credentials..</span>
+      }
     </div>
   )
 }
