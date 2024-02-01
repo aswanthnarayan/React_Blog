@@ -10,7 +10,6 @@ import { Context } from '../../context/Context';
 const Navbar = (isLoggedIn) => {
 
   const PF = "http://localhost:3300/uploads/";
-
   const { user, dispatch } = useContext(Context);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
